@@ -1,0 +1,194 @@
+1.Print all odd numbers in an array
+Anonymous function:
+var c=function (a){
+  var b=[];
+for (var i=0;i<a.length;i++){
+  if(a[i]%2==1)
+  {
+    b.push(a[i]);
+  }
+}
+return(b);
+}
+console.log(c([1,2,3,4,5]));
+
+IIFE function:
+(function (a){
+  var b=[];
+for (var i=0;i<a.length;i++){
+  if(a[i]%2==1){
+    b.push(a[i]);
+  }
+}
+console.log(b);
+})([1,2,3,4,5]);
+
+2.Convert all strings to title caps in a string array.
+Anonymous function:
+var capsarr=function (str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
+}
+console.log(capsarr("hello welcome to guvi!"));
+
+IIFE function:
+(function (str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+ console.log( str.join(' '));
+})("hello welcome to guvi!");
+
+3.sum of all numbers in an array.
+Anonymous function:
+var arr=function (str) {
+  var sum=0;
+  for (var i = 0; i < str.length; i++) {
+  sum=sum+str[i];
+  }
+return( sum);
+}
+ console.log(arr([1,2,3,4,5,6]));
+
+IIFE function:
+(function (str) {
+  var sum=0;
+  for (var i = 0; i < str.length; i++) {
+  sum=sum+str[i];
+  }
+ console.log( sum);
+})([1,2,3,4,5,6]);
+
+
+//4.Return all the prime nukbers in Array.
+let num = [1,2,3,4,5,6,7,8,9];
+let result = [];
+ var isPrime= function (num) {
+  if(num < 2) return false;
+  for (let k = 2; k < num; k++){
+    if(num % k == 0){
+      return false;
+    }
+  }
+  return true;
+}
+num.forEach(function (element) {
+  const item = isPrime(element);
+  if (item) {
+    result.push(element);
+  }
+});
+console.log(result);
+
+5.Return all the palindromes in an array.
+Anonymous function:
+const arr = ['carecar', 1344, 12321, 'did', 'cannot'];
+const isPalindrome = function(el) {
+   const str = String(el);
+   let i = 0;
+   let j = str.length - 1;
+   while(i < j) {
+      if(str[i] === str[j]) {
+         i++;
+         j--;
+      }
+      else {
+         return false;
+      }
+   }
+   return true;
+};
+const findPalindrome = function(arr) {
+   return arr.filter(el => isPalindrome(el));
+};
+console.log(findPalindrome(arr));
+
+6.Return mredian of two sorted arrays of the same size.
+var  getMedian=function(ar1, ar2, n)
+{
+    var i = 0;
+    var j = 0;
+    var count;
+    var m1 = -1, m2 = -1;
+    for (count = 0; count <= n; count++)
+    {
+        if (i == n)
+        {
+            m1 = m2;
+            m2 = ar2[0];
+            break;
+        }
+        else if (j == n)
+        {
+            m1 = m2;
+            m2 = ar1[0];
+            break;
+        }
+        if (ar1[i] <= ar2[j])
+        {
+            m1 = m2; 
+            m2 = ar1[i];
+            i++;
+        }
+        else
+        {
+            m1 = m2; 
+            m2 = ar2[j];
+            j++;
+        }
+    }
+
+    return (m1 + m2)/2;
+}
+var ar1 = [1, 12, 15, 26, 38];
+var ar2 = [2, 13, 17, 30, 45];
+var n1 = ar1.length;
+var n2 = ar2.length;
+if (n1 == n2)
+   console.log("Median is "+ getMedian(ar1, ar2, n1));
+else
+     console.log("Doesn't work for arrays of unequal size");
+
+7. Remove duplicates from an array.
+var removeDuplicates=function (arr, n)
+{
+    if (n==0 || n==1)
+        return n;
+    var temp = new Array(n);
+    var j = 0;
+    for (var i=0; i<n-1; i++)
+        if (arr[i] != arr[i+1])
+            temp[j++] = arr[i];
+    temp[j++] = arr[n-1];
+    for (var i=0; i<j; i++)
+        arr[i] = temp[i];
+    return j;
+}
+var arr = [1, 2, 2, 3, 4, 4, 4, 5, 5];
+    var n = arr.length;
+    n = removeDuplicates(arr, n);
+    for (var i=0; i<n; i++)
+    console.log( arr[i]+" ");
+
+8. Rotate an array by k times.
+var RightRotate=function (a, n, k)
+{
+    k = k % n;
+    for (let i = 0; i < n; i++) {
+        if (i < k) {
+            console.log(a[n + i - k] + " ");
+        }
+        else {
+            console.log((a[i - k]) + " ");
+        }
+    }
+    
+}
+let Array = [1, 2, 3, 4, 5];
+let N = Array.length;
+let K = 2;
+RightRotate(Array, N, K);
